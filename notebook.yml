@@ -6,11 +6,11 @@ services:
     image: base-notebook
     container_name: ${NAME}
     volumes:
-     - "workspace:/home/jovyan/workspace"
+     - "work:/home/jovyan/work"
     ports:
       - "${PORT}:8888"
 
 volumes:
-  workspace:
+  work:
     external:
       name: ${WORK_VOLUME}
