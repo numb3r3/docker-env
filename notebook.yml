@@ -6,7 +6,7 @@ services:
     image: base-notebook
     container_name: ${NAME}
     volumes:
-     - "workspace:/home/jupyter/workspace"
+     - "workspace:/home/jovyan/workspace"
     ports:
       - "${PORT}:8888"
 

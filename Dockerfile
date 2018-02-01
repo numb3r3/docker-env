@@ -2,7 +2,7 @@
 # Pick your favorite docker-stacks image
 FROM jupyter/base-notebook:latest
 
-USER jupyter
+USER jovyan
 
 # Add permanent pip/conda installs, data files, other user libs here
 # e.g., RUN pip install jupyter_dashboards
