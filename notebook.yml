@@ -9,8 +9,6 @@ services:
      - "workspace:/home/jovyan/workspace"
     ports:
       - "${PORT}:8888"
-    environment:
-      PASSWORD: "sha1:2e924f0c47aa:9409d80ce73c227365a09033df2632a05177df3e"
 
 volumes:
   workspace:
