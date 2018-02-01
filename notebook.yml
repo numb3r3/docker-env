@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  notebook:
+    build: .
+    image: base-notebook
+    container_name: ${NAME}
+    volumes:
+     - "workspace:/home/jupyter/workspace"
+    ports:
+      - "${PORT}:8888"
+
+volumes:
+  workspace:
+    external:
+      name: ${WORK_VOLUME}
