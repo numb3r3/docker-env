@@ -1,33 +1,20 @@
 #!/bin/bash
-# Copyright (c) Jupyter Development Team.
-# Distributed under the terms of the Modified BSD License.
 
 set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-USAGE="Usage: `basename $0` [--secure | --letsencrypt] [--password PASSWORD] [--secrets SECRETS_VOLUME]"
+USAGE="Usage: `basename $0` [--image IMAGENAME]"
 
-# Parse args to determine security settings
-SECURE=${SECURE:=no}
-LETSENCRYPT=${LETSENCRYPT:=no}
+# Parse args to determine which image to build
+IMAGE_NAME=${IMAGE_NAME:=base}
+
 while [[ $# > 0 ]]
 do
 key="$1"
 case $key in
-    --secure)
-    SECURE=yes
-    ;;
-    --letsencrypt)
-    LETSENCRYPT=yes
-    ;;
-    --secrets)
-    SECRETS_VOLUME="$2"
-    shift # past argument
-    ;;
-    --password)
-    PASSWORD="$2"
-    export PASSWORD
+    --image)
+    IMAGE_NAME="$2"
     shift # past argument
     ;;
     *) # unknown option
@@ -36,30 +23,17 @@ esac
 shift # past argument or value
 done
 
-if [[ "$LETSENCRYPT" == yes || "$SECURE" == yes ]]; then
-  if [ -z "${PASSWORD:+x}" ]; then
-    echo "ERROR: Must set PASSWORD if running in secure mode"
-    echo "$USAGE"
-    exit 1
-  fi
-  if [ "$LETSENCRYPT" == yes ]; then
-    CONFIG=letsencrypt-notebook.yml
-    if [ -z "${SECRETS_VOLUME:+x}" ]; then
-      echo "ERROR: Must set SECRETS_VOLUME if running in letsencrypt mode"
-      echo "$USAGE"
-      exit 1
-    fi
-  else
-    CONFIG=secure-notebook.yml
-  fi
-  export PORT=${PORT:=443}
-else
-  CONFIG=notebook.yml
-  export PORT=${PORT:=80}
-fi
-
 # Setup environment
 source "$DIR/env.sh"
+
+if [[ "$IMAGE_NAME" == opencv ]]; then
+    CONFIG=opencv-notebook.yml
+    NAME=opencv-notebook
+else
+  CONFIG=notebook.yml
+fi
+
+export PORT=${PORT:=80}
 
 # Create a Docker volume to store notebooks
 docker volume create --name "$WORK_VOLUME"
