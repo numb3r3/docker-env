@@ -65,7 +65,7 @@ RUN git clone https://github.com/tesseract-ocr/tessdata.git \
 
 RUN git clone https://github.com/madmaze/pytesseract.git \
   && cd pytesseract \
-  && python setup.py install
+  && python setup.py install \
   && cd .. \
   && rm -rf pytesseract
 
