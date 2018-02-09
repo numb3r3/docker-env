@@ -60,7 +60,8 @@ RUN git clone https://github.com/tesseract-ocr/tesseract.git \
 
 RUN git clone https://github.com/tesseract-ocr/tessdata.git \
     && mkdir -p ${TESSDATA_PREFIX}/tessdata \
-    && mv tessdata/* ${TESSDATA_PREFIX}/tessdata
+    && mv tessdata/* ${TESSDATA_PREFIX}/tessdata \
+    && rm -rf tessdata
 
 
 # Switch back to jovyan to avoid accidental container runs as root
