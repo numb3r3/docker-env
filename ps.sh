@@ -20,4 +20,6 @@ case $NAME in
     *) # unknown option
     ;;
 esac
+
+
 docker-compose -f "$DIR/$CONFIG" -p "$NAME" ps
