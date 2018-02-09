@@ -70,4 +70,5 @@ USER jovyan
 
 RUN conda install --quiet --yes -c anaconda numpy \
     && conda install --quiet --yes -c conda-forge opencv \
+    && conda install --quiet --yes -c auto pytesseract \
     && conda clean -tipsy
