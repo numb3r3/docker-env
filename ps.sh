@@ -11,10 +11,10 @@ source "$DIR/env.sh"
 CONFIG="notebook.yml"
 
 case $NAME in
-    opencv)
+    opencv-notebook)
     	CONFIG=opencv-notebook.yml
     ;;
-    base-ocr)
+    base-ocr-notebook)
 		CONFIG=base-ocr-notebook.yml
     *) # unknown option
     ;;
