@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  notebook:
+    build: ./base-ocr-docker/
+    image: base-ocr-notebook
+    container_name: ${NAME}
+    volumes:
+     - "work:/home/jovyan/work"
+    ports:
+      - "${PORT}:8888"
+
+volumes:
+  work:
+    external:
+      name: ${WORK_VOLUME}

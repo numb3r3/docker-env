@@ -29,6 +29,9 @@ done
 if [[ "$IMAGE_NAME" == opencv ]]; then
     CONFIG=opencv-notebook.yml
     NAME=opencv-notebook
+elif [[ "$IMAGE_NAME" == base-ocr ]]; then
+	CONFIG=base-ocr-notebook.yml
+	NAME=base-ocr-notebook
 else
   CONFIG=notebook.yml
 fi
