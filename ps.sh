@@ -16,6 +16,7 @@ case $NAME in
     ;;
     base-ocr-notebook)
 		CONFIG=base-ocr-notebook.yml
+	;;
     *) # unknown option
     ;;
 esac
