@@ -59,10 +59,15 @@ RUN git clone https://github.com/tesseract-ocr/tesseract.git \
 
 
 RUN git clone https://github.com/tesseract-ocr/tessdata.git \
-    && mkdir -p ${TESSDATA_PREFIX}/tessdata \
-    && mv tessdata/* ${TESSDATA_PREFIX}/tessdata \
-    && rm -rf tessdata
+  && mkdir -p ${TESSDATA_PREFIX}/tessdata \
+  && mv tessdata/* ${TESSDATA_PREFIX}/tessdata \
+  && rm -rf tessdata
 
+RUN git clone https://github.com/madmaze/pytesseract.git \
+  && cd pytesseract \
+  && python setup.py install
+  && cd .. \
+  && rm -rf pytesseract
 
 # Switch back to jovyan to avoid accidental container runs as root
 #USER $NB_USER
@@ -70,5 +75,4 @@ USER jovyan
 
 RUN conda install --quiet --yes -c anaconda numpy \
     && conda install --quiet --yes -c conda-forge opencv \
-    && conda install --quiet --yes -c auto pytesseract \
     && conda clean -tipsy
