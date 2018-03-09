@@ -34,15 +34,15 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget --quiet http://www.leptonica.com/source/leptonica-1.75.1.tar.gz \
-  && tar -xvf leptonica-1.75.1.tar.gz \
-  && cd leptonica-1.75.1 \
+
+RUN git clone git clone https://github.com/DanBloomberg/leptonica.git \
+  && cd leptonica \
+  && autoreconf -vi \
+  && ./autobuild \
   && ./configure \
-  && make \
-  && make install \
+  && make && make install \
   && cd .. \
-  && rm -r leptonica-1.75.1 \
-  && rm -r leptonica-1.75.1.tar.gz
+  && rm -r leptonica
 
 
 RUN git clone https://github.com/tesseract-ocr/tesseract.git \
@@ -55,12 +55,6 @@ RUN git clone https://github.com/tesseract-ocr/tesseract.git \
   && ldconfig \
   && cd .. \
   && rm -r tesseract
-
-
-#RUN git clone https://github.com/tesseract-ocr/tessdata.git \
-#  && mkdir -p ${TESSDATA_PREFIX}/tessdata \
-#  && mv tessdata/* ${TESSDATA_PREFIX}/tessdata \
-#  && rm -rf tessdata
 
 # osd Orientation and script detection
 RUN wget -O ${TESSDATA_PREFIX}/osd.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/osd.traineddata
