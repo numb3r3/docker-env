@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 
-RUN git clone git clone https://github.com/DanBloomberg/leptonica.git \
+RUN git clone https://github.com/DanBloomberg/leptonica.git \
   && cd leptonica \
   && autoreconf -vi \
   && ./autobuild \
