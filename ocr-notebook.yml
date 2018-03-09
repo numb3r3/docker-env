@@ -2,8 +2,8 @@ version: "2"
 
 services:
   notebook:
-    build: ./base-ocr-docker/
-    image: base-ocr-notebook
+    build: ./ocr-docker/
+    image: ocr-notebook
     container_name: ${NAME}
     volumes:
      - "work:/home/jovyan/work"

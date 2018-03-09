@@ -14,8 +14,8 @@ case $NAME in
     opencv-notebook)
     	CONFIG=opencv-notebook.yml
     ;;
-    base-ocr-notebook)
-		CONFIG=base-ocr-notebook.yml
+    ocr-notebook)
+		CONFIG=ocr-notebook.yml
 	;;
     *) # unknown option
     ;;
