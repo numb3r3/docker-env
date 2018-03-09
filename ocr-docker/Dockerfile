@@ -37,7 +37,6 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 RUN wget --quiet http://www.leptonica.com/source/leptonica-1.75.1.tar.gz \
   && tar -xvf leptonica-1.75.1.tar.gz \
   && cd leptonica-1.75.1 \
-  && autoreconf -vi && ./autobuild \
   && ./configure \
   && make \
   && make install \
