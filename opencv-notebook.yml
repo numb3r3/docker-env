@@ -6,11 +6,11 @@ services:
     image: opencv-notebook
     container_name: ${NAME}
     volumes:
-     - "work:/home/jovyan/work"
+     - "./opencv-work:/home/jovyan/work"
     ports:
       - "${PORT}:8888"
 
-volumes:
-  work:
-    external:
-      name: ${WORK_VOLUME}
+#volumes:
+#  work:
+#    external:
+#      name: ${WORK_VOLUME}
