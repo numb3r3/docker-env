@@ -2,7 +2,7 @@ FROM jupyter/scipy-notebook
 
 LABEL maintainer="Numb3r3 <wangfelix87@gmail.com>"
 
-ENV TESSDATA_PREFIX=/usr/local/share/
+ENV TESSDATA_PREFIX /usr/local/share/tessdata
 
 USER root
 
@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 RUN wget --quiet http://www.leptonica.com/source/leptonica-1.75.1.tar.gz \
   && tar -xvf leptonica-1.75.1.tar.gz \
   && cd leptonica-1.75.1 \
+  && autoreconf -vi && ./autobuild \
   && ./configure \
   && make \
   && make install \
@@ -51,17 +52,30 @@ RUN git clone https://github.com/tesseract-ocr/tesseract.git \
   && ./configure --enable-debug \
   && LDFLAGS="-L/usr/local/lib" CFLAGS="-I/usr/local/include" make \
   && make install \
-  && make training \
-  && make training-install \
+  && make training && make training-install \
   && ldconfig \
   && cd .. \
   && rm -r tesseract
 
 
-RUN git clone https://github.com/tesseract-ocr/tessdata.git \
-  && mkdir -p ${TESSDATA_PREFIX}/tessdata \
-  && mv tessdata/* ${TESSDATA_PREFIX}/tessdata \
-  && rm -rf tessdata
+#RUN git clone https://github.com/tesseract-ocr/tessdata.git \
+#  && mkdir -p ${TESSDATA_PREFIX}/tessdata \
+#  && mv tessdata/* ${TESSDATA_PREFIX}/tessdata \
+#  && rm -rf tessdata
+
+# osd Orientation and script detection
+wget -O ${TESSDATA_PREFIX}/osd.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/osd.traineddata
+# equ Math / equation detection
+wget -O ${TESSDATA_PREFIX}/equ.traineddata https://github.com/tesseract-ocr/tessdata/raw/3.04.00/equ.traineddata
+# latin 
+wget -O ${TESSDATA_PREFIX}/lat.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/lat.traineddata
+# grc Greek, Ancient(-1453)
+wget -O ${TESSDATA_PREFIX}/grc.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/grc.traineddata
+# eng English
+wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/eng.traineddata
+# chi_sim 
+wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/chi_sim.traineddata
+# other languages: https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
 
 RUN git clone https://github.com/madmaze/pytesseract.git \
   && cd pytesseract \
