@@ -64,17 +64,17 @@ RUN git clone https://github.com/tesseract-ocr/tesseract.git \
 #  && rm -rf tessdata
 
 # osd Orientation and script detection
-wget -O ${TESSDATA_PREFIX}/osd.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/osd.traineddata
+RUN wget -O ${TESSDATA_PREFIX}/osd.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/osd.traineddata
 # equ Math / equation detection
-wget -O ${TESSDATA_PREFIX}/equ.traineddata https://github.com/tesseract-ocr/tessdata/raw/3.04.00/equ.traineddata
+RUN wget -O ${TESSDATA_PREFIX}/equ.traineddata https://github.com/tesseract-ocr/tessdata/raw/3.04.00/equ.traineddata
 # latin 
-wget -O ${TESSDATA_PREFIX}/lat.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/lat.traineddata
+RUN wget -O ${TESSDATA_PREFIX}/lat.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/lat.traineddata
 # grc Greek, Ancient(-1453)
-wget -O ${TESSDATA_PREFIX}/grc.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/grc.traineddata
+RUN wget -O ${TESSDATA_PREFIX}/grc.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/grc.traineddata
 # eng English
-wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/eng.traineddata
+RUN wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/eng.traineddata
 # chi_sim 
-wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/chi_sim.traineddata
+RUN wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/chi_sim.traineddata
 # other languages: https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
 
 RUN git clone https://github.com/madmaze/pytesseract.git \
