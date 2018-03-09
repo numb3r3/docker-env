@@ -12,9 +12,11 @@ CONFIG="notebook.yml"
 
 case $NAME in
     opencv-notebook)
+		echo "build opencv notebook"
     	CONFIG=opencv-notebook.yml
     ;;
     ocr-notebook)
+		echo "build ocr notebook"
 		CONFIG=ocr-notebook.yml
 	;;
     *) # unknown option
