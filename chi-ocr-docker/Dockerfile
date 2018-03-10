@@ -8,8 +8,6 @@ USER root
 #USER $NB_USER
 USER jovyan
 
-RUN pip install pip install easydict
-
 RUN conda install --quiet --yes -c anaconda numpy cython pillow h5py\
     && conda install --quiet --yes -c conda-forge opencv keras matplotlib lmdb mahotas \
     && conda install --quiet --yes -c soumith pytorch=0.1.12 cuda80 torchvision  \
