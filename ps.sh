@@ -17,6 +17,9 @@ case $NAME in
     ocr-notebook)
 		CONFIG=ocr-notebook.yml
 	;;
+    chi-ocr-notebook)
+        CONFIG=chi-ocr-notebook.yml
+    ;;
     *) # unknown option
     ;;
 esac

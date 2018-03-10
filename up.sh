@@ -4,8 +4,6 @@ set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 # Setup environment
 source "$DIR/env.sh"
 
@@ -19,6 +17,9 @@ case $NAME in
     ocr-notebook)
 		CONFIG=ocr-notebook.yml
 	;;
+    chi-ocr-notebook)
+        CONFIG=chi-ocr-notebook.yml
+    ;;
     *) # unknown option
     ;;
 esac

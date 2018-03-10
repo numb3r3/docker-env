@@ -19,6 +19,10 @@ case $NAME in
 		echo "build ocr notebook"
 		CONFIG=ocr-notebook.yml
 	;;
+    chi-ocr-notebook)
+        echo "build chinese ocr notebook"
+        CONFIG=chi-ocr-notebook.yml
+    ;;
     *) # unknown option
     ;;
 esac
