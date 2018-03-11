@@ -8,8 +8,8 @@ USER root
 #USER $NB_USER
 USER jovyan
 
-RUN conda install --quiet --yes -c anaconda numpy cython pillow h5py\
-    && conda install --quiet --yes -c conda-forge opencv keras matplotlib lmdb mahotas \
+RUN conda install --quiet --yes -c anaconda numpy cython pillow lmdb h5py \
+    && conda install --quiet --yes -c conda-forge opencv keras matplotlib mahotas \
     && conda install --quiet --yes -c soumith pytorch=0.1.12 cuda80 torchvision  \
     && conda install --quiet --yes tensorflow=1.3 tensorflow-gpu=1.3 \
     && conda clean -tipsy
