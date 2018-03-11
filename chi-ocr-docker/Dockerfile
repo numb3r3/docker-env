@@ -14,7 +14,7 @@ RUN conda install --quiet --yes -c anaconda numpy cython pillow h5py\
     && conda install --quiet --yes tensorflow=1.3 tensorflow-gpu=1.3 \
     && conda clean -tipsy
 
-RUN git clone https://github.com/chineseocr/chinese-ocr.git \
+RUN git clone https://github.com/numb3r3/chinese-ocr.git \
     && cd chinese-ocr \
     && git checkout chinese-ocr-python-3.6 \
     && cd ./ctpn/lib/utils \
