@@ -6,7 +6,7 @@ services:
     image: opencv-notebook
     container_name: ${NAME}
     volumes:
-     - "./opencv-work:/home/jovyan/work"
+     - "./workspace:/home/jovyan/work"
     ports:
       - "${PORT}:8888"
 

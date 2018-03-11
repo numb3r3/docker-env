@@ -6,7 +6,7 @@ services:
     image: chi-ocr-notebook
     container_name: ${NAME}
     volumes:
-     - "./chi-ocr-work:/home/jovyan/work"
+     - "./workspace:/home/jovyan/work"
     ports:
       - "${PORT}:8888"
 
