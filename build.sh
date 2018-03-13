@@ -23,6 +23,10 @@ case $NAME in
         echo "build chinese ocr notebook"
         CONFIG=chi-ocr-notebook.yml
     ;;
+    tf-notebook)
+        echo "build tensorflow notebook"
+        CONFIG=tf-notebook.yml
+    ;;
     *) # unknown option
     ;;
 esac

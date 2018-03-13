@@ -20,6 +20,9 @@ case $NAME in
     chi-ocr-notebook)
         CONFIG=chi-ocr-notebook.yml
     ;;
+    tf-notebook)
+        CONFIG=tf-notebook.yml
+    ;;
     *) # unknown option
     ;;
 esac
